@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://bovgtiofpgvhy"]
+
+[ext_resource type="Texture2D" uid="uid://byfqfeap6acak" path="res://addons/Resources/Resources/M_Spawn.png" id="1_fo6ck"]
+[ext_resource type="Script" path="res://scripts/misc/life-healing.gd" id="2_v8tt3"]
+
+[sub_resource type="Animation" id="Animation_360wt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_y1yg2"]
+resource_name = "death"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7527s"]
+_data = {
+"RESET": SubResource("Animation_360wt"),
+"death": SubResource("Animation_y1yg2")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_biyy7"]
+
+[node name="Meat" type="Sprite2D"]
+position = Vector2(0, -25)
+texture = ExtResource("1_fo6ck")
+hframes = 7
+script = ExtResource("2_v8tt3")
+HEAL_AMOUNT = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7527s")
+}
+autoplay = "death"
+
+[node name="PickupArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+position = Vector2(0, 10)
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_biyy7")
+debug_color = Color(0, 0.6, 0, 0.419608)

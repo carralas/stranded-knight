@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://nttoed770ns3"]
+
+[ext_resource type="Texture2D" uid="uid://caq365pm6j4w7" path="res://addons/Factions/Knights/Troops/Archer/Arrow/Arrow.png" id="1_xcs3j"]
+[ext_resource type="Script" path="res://scripts/player/arrow.gd" id="2_b4ufs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52hhl"]
+
+[node name="Arrow" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("2_b4ufs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xcs3j")
+vframes = 2
+
+[node name="ContactArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ContactArea"]
+scale = Vector2(3, 1)
+shape = SubResource("RectangleShape2D_52hhl")

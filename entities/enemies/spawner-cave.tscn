@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2pnb2srolpdw"]
+
+[ext_resource type="Script" path="res://scripts/misc/mob-spawner.gd" id="1_xdh4h"]
+[ext_resource type="PackedScene" uid="uid://c1k4jcvtp4fyu" path="res://entities/enemies/goblin.tscn" id="2_baehm"]
+[ext_resource type="Texture2D" uid="uid://pev0aooclr3i" path="res://addons/Resources/Gold Mine/GoldMine_Inactive.png" id="2_hnuy8"]
+[ext_resource type="PackedScene" uid="uid://c15nfi33eu3kn" path="res://entities/enemies/enemy-knight.tscn" id="3_kienc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7d26"]
+
+[node name="SpawnerCave" type="RigidBody2D"]
+gravity_scale = 0.0
+freeze = true
+script = ExtResource("1_xdh4h")
+creatures = Array[PackedScene]([ExtResource("2_baehm"), ExtResource("3_kienc")])
+SPAWN_COOLDOWN = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -25)
+texture = ExtResource("2_hnuy8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -50)
+scale = Vector2(7, 3)
+shape = SubResource("RectangleShape2D_a7d26")

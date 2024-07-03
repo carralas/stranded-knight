@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://b7v0xdcdvcrgo"]
+
+[ext_resource type="Script" path="res://scripts/enemy/main-enemy.gd" id="1_3yab5"]
+[ext_resource type="PackedScene" uid="uid://bovgtiofpgvhy" path="res://entities/misc/meat.tscn" id="2_kou7j"]
+[ext_resource type="PackedScene" uid="uid://cwc123lgewfic" path="res://entities/enemies/damage-tooltip.tscn" id="3_35aar"]
+[ext_resource type="Texture2D" uid="uid://d2p05bifg8bn4" path="res://addons/Resources/Sheep/HappySheep_Bouncing.png" id="3_o8psc"]
+[ext_resource type="Script" path="res://scripts/enemy/movement-random.gd" id="4_dwr0r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65ccm"]
+atlas = ExtResource("3_o8psc")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plyva"]
+atlas = ExtResource("3_o8psc")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpykk"]
+atlas = ExtResource("3_o8psc")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nux4"]
+atlas = ExtResource("3_o8psc")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol2bd"]
+atlas = ExtResource("3_o8psc")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsnym"]
+atlas = ExtResource("3_o8psc")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wfmga"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65ccm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plyva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpykk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nux4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol2bd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsnym")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3evlb"]
+
+[node name="Sheep" type="CharacterBody2D" groups=["target"]]
+motion_mode = 1
+script = ExtResource("1_3yab5")
+death_prefab = ExtResource("2_kou7j")
+damage_tooltip_prefab = ExtResource("3_35aar")
+HP = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -25)
+sprite_frames = SubResource("SpriteFrames_wfmga")
+autoplay = "default"
+frame_progress = 0.108427
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+scale = Vector2(2, 1)
+shape = SubResource("CapsuleShape2D_3evlb")
+
+[node name="Script movement" type="Node" parent="."]
+script = ExtResource("4_dwr0r")
+SPEED = 75.0
+ACCELERATION = 0.25
+DIRECTION_COOLDOWN = 0.5
+
+[node name="DamageMarker" type="Marker2D" parent="."]
+position = Vector2(0, -50)

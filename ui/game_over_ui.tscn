@@ -1,0 +1,341 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbqlysrrnd3db"]
+
+[ext_resource type="Script" path="res://scripts/ui/game_over_ui.gd" id="1_0gfyk"]
+[ext_resource type="Texture2D" uid="uid://bc71kl6oatg2d" path="res://addons/UI/Ribbons/Ribbon_Red_Connection_Down.png" id="1_kardj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dbmhr"]
+texture = ExtResource("1_kardj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_mvxw3"]
+font_size = 10
+
+[sub_resource type="Animation" id="Animation_s5ygl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BGShader:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.392157)]
+}
+
+[sub_resource type="Animation" id="Animation_h2ltl"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BGShader:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.392157)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_psyj1"]
+_data = {
+"RESET": SubResource("Animation_s5ygl"),
+"default": SubResource("Animation_h2ltl")
+}
+
+[node name="GameOverUI" type="CanvasLayer"]
+script = ExtResource("1_0gfyk")
+
+[node name="BGShader" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Text" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 480.0
+offset_right = 20.0
+offset_bottom = 520.0
+grow_horizontal = 2
+
+[node name="GAME" type="Control" parent="Text"]
+layout_mode = 2
+anchors_preset = 0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="G" type="Panel" parent="Text/GAME"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.5
+offset_top = -20.0
+offset_right = -37.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dbmhr")
+
+[node name="Label" type="Label" parent="Text/GAME/G"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "G"
+label_settings = SubResource("LabelSettings_mvxw3")
+horizontal_alignment = 1
+
+[node name="A" type="Panel" parent="Text/GAME"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -20.0
+offset_right = 2.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dbmhr")
+
+[node name="Label" type="Label" parent="Text/GAME/A"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "A"
+label_settings = SubResource("LabelSettings_mvxw3")
+horizontal_alignment = 1
+
+[node name="M" type="Panel" parent="Text/GAME"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.5
+offset_top = -20.0
+offset_right = 42.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dbmhr")
+
+[node name="Label" type="Label" parent="Text/GAME/M"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "M"
+label_settings = SubResource("LabelSettings_mvxw3")
+horizontal_alignment = 1
+
+[node name="E" type="Panel" parent="Text/GAME"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 42.5
+offset_top = -20.0
+offset_right = 82.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dbmhr")
+
+[node name="Label" type="Label" parent="Text/GAME/E"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "E"
+label_settings = SubResource("LabelSettings_mvxw3")
+horizontal_alignment = 1
+
+[node name="OVER" type="Control" parent="Text"]
+layout_mode = 2
+anchors_preset = 0
+offset_top = 45.0
+offset_bottom = 45.0
+
+[node name="O" type="Panel" parent="Text/OVER"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.5
+offset_top = -20.0
+offset_right = -37.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dbmhr")
+
+[node name="Label" type="Label" parent="Text/OVER/O"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "O"
+label_settings = SubResource("LabelSettings_mvxw3")
+horizontal_alignment = 1
+
+[node name="V" type="Panel" parent="Text/OVER"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -20.0
+offset_right = 2.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dbmhr")
+
+[node name="Label" type="Label" parent="Text/OVER/V"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "V"
+label_settings = SubResource("LabelSettings_mvxw3")
+horizontal_alignment = 1
+
+[node name="E" type="Panel" parent="Text/OVER"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.5
+offset_top = -20.0
+offset_right = 42.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dbmhr")
+
+[node name="Label" type="Label" parent="Text/OVER/E"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "E"
+label_settings = SubResource("LabelSettings_mvxw3")
+horizontal_alignment = 1
+
+[node name="R" type="Panel" parent="Text/OVER"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 42.5
+offset_top = -20.0
+offset_right = 82.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_dbmhr")
+
+[node name="Label" type="Label" parent="Text/OVER/R"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "R"
+label_settings = SubResource("LabelSettings_mvxw3")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_psyj1")
+}

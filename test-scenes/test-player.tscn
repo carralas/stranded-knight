@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh8lqouhindh2"]
+
+[ext_resource type="PackedScene" uid="uid://dtxslxcrjjmnf" path="res://entities/player/player.tscn" id="1_7fxbh"]
+[ext_resource type="PackedScene" uid="uid://c1k4jcvtp4fyu" path="res://entities/enemies/goblin.tscn" id="2_0knl4"]
+[ext_resource type="PackedScene" uid="uid://c15nfi33eu3kn" path="res://entities/enemies/enemy-knight.tscn" id="3_wh5q6"]
+[ext_resource type="PackedScene" uid="uid://b7v0xdcdvcrgo" path="res://entities/enemies/sheep.tscn" id="5_3754d"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_7fxbh")]
+position = Vector2(100, 100)
+
+[node name="Goblin" parent="." instance=ExtResource("2_0knl4")]
+position = Vector2(750, 500)
+
+[node name="Goblin2" parent="." instance=ExtResource("2_0knl4")]
+position = Vector2(850, 500)
+
+[node name="Knight" parent="." instance=ExtResource("3_wh5q6")]
+position = Vector2(952, 396)
+
+[node name="Sheep" parent="." instance=ExtResource("5_3754d")]
+position = Vector2(400, 400)
+
+[node name="Sheep2" parent="." instance=ExtResource("5_3754d")]
+position = Vector2(300, 400)

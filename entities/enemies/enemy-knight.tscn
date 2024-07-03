@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://c15nfi33eu3kn"]
+
+[ext_resource type="Script" path="res://scripts/enemy/main-enemy.gd" id="1_tlcmj"]
+[ext_resource type="PackedScene" uid="uid://cwc123lgewfic" path="res://entities/enemies/damage-tooltip.tscn" id="2_djwuq"]
+[ext_resource type="PackedScene" uid="uid://r2b2pv7a5xb7" path="res://entities/misc/skull.tscn" id="2_evoid"]
+[ext_resource type="Texture2D" uid="uid://7imkrub2mu6e" path="res://addons/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png" id="2_lnayt"]
+[ext_resource type="Script" path="res://scripts/enemy/movement-follow.gd" id="4_hqt74"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reiho"]
+atlas = ExtResource("2_lnayt")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgqie"]
+atlas = ExtResource("2_lnayt")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xgtw"]
+atlas = ExtResource("2_lnayt")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scbxq"]
+atlas = ExtResource("2_lnayt")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0yuw"]
+atlas = ExtResource("2_lnayt")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yo71"]
+atlas = ExtResource("2_lnayt")
+region = Rect2(960, 192, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wfmga"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reiho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgqie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xgtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scbxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0yuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yo71")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3evlb"]
+
+[node name="Knight" type="CharacterBody2D" groups=["enemies", "target"]]
+motion_mode = 1
+script = ExtResource("1_tlcmj")
+death_prefab = ExtResource("2_evoid")
+damage_tooltip_prefab = ExtResource("2_djwuq")
+HP = 5
+DAMAGE = 2
+GOLD = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -25)
+sprite_frames = SubResource("SpriteFrames_wfmga")
+autoplay = "default"
+frame_progress = 0.108427
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -25)
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_3evlb")
+
+[node name="Script movement" type="Node" parent="."]
+script = ExtResource("4_hqt74")
+SPEED = 175.0
+ACCELERATION = 0.25
+
+[node name="DamageMarker" type="Marker2D" parent="."]
+position = Vector2(0, -50)

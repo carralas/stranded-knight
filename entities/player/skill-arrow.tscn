@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7luqvkwoptsv"]
+
+[ext_resource type="Script" path="res://scripts/player/skill-arrow.gd" id="1_rtded"]
+[ext_resource type="PackedScene" uid="uid://nttoed770ns3" path="res://entities/player/arrow.tscn" id="2_cbyke"]
+
+[node name="SkillArrow" type="Node2D"]
+script = ExtResource("1_rtded")
+arrow_prefab = ExtResource("2_cbyke")
